@@ -18,7 +18,7 @@ let secondREQ = document.querySelector("#secondREQ");
 let emailREQ = document.querySelector("#emailREQ");
 let passwordREQ = document.querySelector("#passwordREQ");
 let buttonSignUP = document.querySelector(".btn-login");
-let regexEmail = /^[A-z0-9]+@(gmail|yahoo).com$/;
+let regexEmail = /^[A-z0-9._-]+@(gmail|yahoo).com$/;
 let regexPass = /^[A-z0-9]{6,18}$/;
 let errMsg = document.querySelector(".errMsg");
 let arrayOfInformation = [];
@@ -29,6 +29,9 @@ if (localStorage.getItem("information")) {
 }
 // localStorage.clear();
 //signup click/////////////////////
+let data = window.localStorage.getItem("information");
+let tasks = JSON.parse(data);
+console.log(tasks);
 buttonSignUP.addEventListener("click", function (e) {
   e.preventDefault();
   if (firstName.value === "") {
@@ -48,10 +51,31 @@ buttonSignUP.addEventListener("click", function (e) {
   if (signUpEmail.value === "") {
     emailREQ.innerHTML = `/The email field is required/`;
   } else {
-    if (regexEmail.test(signUpEmail.value)) {
-      emailREQ.innerText = "";
+    if (tasks === null) {
+      if (regexEmail.test(signUpEmail.value)) {
+        emailREQ.innerText = "";
+        emailStat = true;
+      } else {
+        emailREQ.innerText = "/The email should be like Eg/ ";
+      }
     } else {
-      emailREQ.innerText = "/The email should be like Eg/ ";
+      if (regexEmail.test(signUpEmail.value)) {
+        emailREQ.innerText = "";
+        for (let i = 0; i < tasks.length; i++) {
+          if (signUpEmail.value === tasks[i].email) {
+            console.log(tasks[i].email);
+            emailREQ.innerText = /This email has account/;
+            console.log(/This email has account/);
+            passwordREQ.innerHTML = "";
+            emailStat = false;
+            e.preventDefault();
+          } else {
+            emailStat = true;
+          }
+        }
+      } else {
+        emailREQ.innerText = "/The email should be like Eg/ ";
+      }
     }
   }
   if (signUpPassword.value === "") {
@@ -68,8 +92,10 @@ buttonSignUP.addEventListener("click", function (e) {
     signUpEmail.value.match(regexEmail) &&
     signUpPassword.value.match(regexPass) &&
     firstName.value.length >= 3 &&
-    secondName.value.length >= 3
+    secondName.value.length >= 3 &&
+    emailStat == true
   ) {
+    emailStat = false;
     addInformationToArray(
       firstName.value,
       secondName.value,
@@ -130,21 +156,28 @@ login.onclick = function (e) {
   localStorage.setItem("inPassword", loginPassword.value);
   let PasswordLogIn = localStorage.getItem("inPassword");
   if (tasks === null) {
-    errMsg.innerHTML = "please creat account first";
+    errMsg.innerHTML = "please create an account";
   } else {
     tasks.forEach((element) => {
       state = false;
-      if (EmailLogIn === element.email && PasswordLogIn === element.password) {
+      if (EmailLogIn === "" && PasswordLogIn === "") {
+        errMsg.innerText = "Please enter your Email and password ";
+      } else if (
+        EmailLogIn === element.email &&
+        PasswordLogIn === element.password
+      ) {
         state = true;
         localStorage.setItem("logName", element.FirstName);
+      } else {
+        e.preventDefault();
+        errMsg.innerText = "Email or password is wrong";
       }
 
       if (state == true) {
+        emailStat = false;
         state = false;
         window.open("./category.html", "_self");
-      } else {
-        errMsg.innerHTML = "Email or password is wrong";
-        e.preventDefault();
+        errMsg.innerHTML = "";
       }
     });
   }
