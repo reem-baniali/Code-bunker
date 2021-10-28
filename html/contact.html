@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Bunker | Contact Us</title>
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
   </head>
   <body>
     <link
@@ -18,7 +18,12 @@
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container border-bottom border-warning border-1">
-        <img class="navbar-brand" src="imgs/logoH.svg" width="100" alt="logo" />
+        <img
+          class="navbar-brand"
+          src="../imgs/logoH.svg"
+          width="100"
+          alt="logo"
+        />
         <button
           class="navbar-toggler"
           type="button"
@@ -33,12 +38,12 @@
         <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">
+              <a class="nav-link" aria-current="page" href="../index.html">
                 Home
               </a>
             </li>
             <li class="nav-item home-btn-login">
-              <a class="nav-link" href="signup.html">Log in</a>
+              <a class="nav-link loginBtn" href="signup.html">Log in</a>
             </li>
           </ul>
         </div>
@@ -63,7 +68,7 @@
         <div class="col-md-9">
           <div class="contact-form">
             <div class="form-group">
-              <label class="  control-label col-sm-2" for="fname">
+              <label class="control-label col-sm-2" for="fname">
                 First Name:
               </label>
               <div class="col-sm-10">
@@ -76,10 +81,9 @@
                 />
                 <div class="nameReq text-danger"></div>
               </div>
-              
             </div>
             <div class="form-group">
-              <label class=" control-label col-sm-2" for="lname">
+              <label class="control-label col-sm-2" for="lname">
                 Last Name:
               </label>
               <div class="col-sm-10">
@@ -91,11 +95,12 @@
                   name="lname"
                 />
                 <div class="lnameReq text-danger"></div>
-
               </div>
             </div>
             <div class="form-group">
-              <label id="Email" class="control-label col-sm-2" for="email">Email:</label>
+              <label id="Email" class="control-label col-sm-2" for="email">
+                Email:
+              </label>
               <div class="col-sm-10">
                 <input
                   type="email"
@@ -105,7 +110,6 @@
                   name="email"
                 />
                 <div class="emailReq text-danger"></div>
-
               </div>
             </div>
             <div class="form-group">
@@ -116,12 +120,12 @@
                 <textarea class="form-control" rows="5" id="comment"></textarea>
                 <div class="commentReq text-danger"></div>
               </div>
-              
-
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="sub-button btn btn-default onclick="myFunction()">Submit</button>
+                <button type="submit" class="sub-button btn btn-default">
+                  Submit
+                </button>
               </div>
             </div>
           </div>
@@ -131,7 +135,7 @@
     <footer>
       <div class="container">
         <div class="logo">
-          <img src="imgs/logoH.png" width="70px" alt="" />
+          <img src="../imgs/logoH.png" width="70px" alt="" />
         </div>
         <div class="social-icon">
           <a
@@ -151,8 +155,7 @@
         </div>
       </div>
     </footer>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/Contact.js"></script>
-    
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/contact.js"></script>
   </body>
 </html>

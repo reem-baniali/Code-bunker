@@ -391,7 +391,6 @@ footer button.show {
   background: #4e4d4c;
 }
 
-
 @media (max-width: 767.8px) {
   div.info_box {
     width: 95%;
@@ -405,9 +404,8 @@ footer button.show {
   .result_box {
     width: 95%;
   }
-    .result_box .buttons button,
+  .result_box .buttons button,
   .result_box .score_text span {
     font-size: 13px;
   }
 }
-
